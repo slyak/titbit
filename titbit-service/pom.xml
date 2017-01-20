@@ -15,8 +15,7 @@
     <description>Titbit Service</description>
 
     <properties>
-        <java.version>1.8</java.version>
-        <reactor-netty.version>0.6.0.BUILD-SNAPSHOT</reactor-netty.version>
+        <docker.image.prefix>slyak</docker.image.prefix>
         <txtmark.version>0.13</txtmark.version>
     </properties>
 
@@ -38,6 +37,10 @@
             <artifactId>spring-session</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -46,23 +49,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <!--spring boot web reactive-->
         <dependency>
             <groupId>org.springframework.boot.experimental</groupId>
             <artifactId>spring-boot-starter-web-reactive</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!--<dependency>
-            <groupId>io.projectreactor.ipc</groupId>
-            <artifactId>reactor-netty</artifactId>
-            <version>0.5.2.RELEASE</version>
-        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,4 +61,43 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot.experimental</groupId>
+                <artifactId>spring-boot-dependencies-web-reactive</artifactId>
+                <version>0.1.0.BUILD-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.2.3</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
