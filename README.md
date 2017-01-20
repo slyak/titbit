@@ -5,4 +5,4 @@ titbit is a blog for ......
 micro services for titbit
 
 ### titbit-ui
-titbt frontend
+titbit frontend
