@@ -3,14 +3,13 @@ package com.slyak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 @SpringBootApplication
 @EnableJdbcHttpSession
-@EnableJpaRepositories(basePackages = "com.slyak", repositoryBaseClass = GenericJpaRepositoryImpl.class, repositoryFactoryBeanClass = GenericJpaRepositoryFactoryBean.class)
-@EntityScan({"com.slyak"})
+@EnableJpaRepositories/*(basePackages = "com.slyak", repositoryBaseClass = GenericJpaRepositoryImpl.class, repositoryFactoryBeanClass = GenericJpaRepositoryFactoryBean.class)*/
+//@EntityScan({"com.slyak"})
 public class TitbitApplication {
 
 	public static void main(String[] args) {
