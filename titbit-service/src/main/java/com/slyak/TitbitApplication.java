@@ -13,7 +13,6 @@ import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHtt
 public class TitbitApplication {
 
 	public static void main(String[] args) {
-		a水淀粉
 		SpringApplication.run(TitbitApplication.class, args);
 	}
 }
