@@ -23,6 +23,13 @@ public class TestController {
 	@Autowired
 	private UserRepository userRepository;
 
+	@GetMapping("/saveUser")
+	Mono<Void> test(){
+		User user = new User();
+		user.setName("hello world");
+		return userRepository.save(user).then();
+	}
+
 	@PostMapping("/user")
 	Mono<Void> create(@RequestBody Publisher<User> userStream) {
 		return this.userRepository.save(userStream).then();

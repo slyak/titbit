@@ -2,6 +2,7 @@ package com.slyak.titbit.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -14,4 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class User {
 
+	@Id String id;
+
+	String name;
 }
