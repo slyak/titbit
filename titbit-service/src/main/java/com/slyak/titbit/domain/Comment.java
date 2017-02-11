@@ -7,15 +7,12 @@ package com.slyak.titbit.domain;
  */
 
 import lombok.Data;
-import org.springframework.data.jpa.domain.AbstractAuditable;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Table;
 import java.util.List;
 
 @Data
-//@Entity
-@Table(name = "t_comment")
-public class Comment extends AbstractAuditable<Long, Long> {
-
+@Document
+public class Comment {
 	List<Comment> comments;
 }

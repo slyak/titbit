@@ -1,9 +1,7 @@
 package com.slyak.titbit.domain;
 
 import lombok.Data;
-import org.springframework.data.jpa.domain.AbstractAuditable;
-
-import javax.persistence.Table;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * .
@@ -11,7 +9,6 @@ import javax.persistence.Table;
  * @author stormning on 2016/12/9.
  */
 @Data
-//@Entity
-@Table(name = "t_experience")
-public class Experience extends AbstractAuditable<Long, Long> {
+@Document
+public class Experience {
 }
