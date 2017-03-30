@@ -113,47 +113,10 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.11</version>
-                <configuration>
-                    <imageName>${docker.registry}/${project.artifactId}</imageName>
-                    <!--<dockerDirectory>src/main/docker</dockerDirectory>-->
-                    <baseImage>java:8</baseImage>
-                    <!-- <env>
-                         <JAVA_OPTS>""</JAVA_OPTS>
-                     </env>-->
-                    <entryPoint>java -Djava.security.egd=file:/dev/./urandom -jar /${project.build.finalName}.jar
-                    </entryPoint>
-                    <resources>
-                        <resource>
-                            <!--<targetPath>/</targetPath>-->
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                    <imageTags>
-                        <imageTag>${project.version}</imageTag>
-                        <imageTag>latest</imageTag>
-                    </imageTags>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

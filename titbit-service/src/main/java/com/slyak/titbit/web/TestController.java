@@ -6,9 +6,9 @@ import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.BaseSubscriber;
+/*import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Mono;*/
 
 import java.util.function.Predicate;
 
@@ -20,7 +20,7 @@ import java.util.function.Predicate;
 @RestController
 public class TestController {
 
-	@Autowired
+	/*@Autowired
 	private UserRepository userRepository;
 
 	@GetMapping("/saveUser")
@@ -64,5 +64,5 @@ public class TestController {
 				return s.startsWith("a");
 			}
 		}).last();
-	}
+	}*/
 }
