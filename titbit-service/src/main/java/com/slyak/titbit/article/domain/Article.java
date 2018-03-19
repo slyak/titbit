@@ -19,4 +19,6 @@ public class Article extends AbstractAuditable<Long, Long> {
 
     private String title;
 
+    private String content;
+
 }

@@ -26,4 +26,5 @@ public class Account extends AbstractAuditable<Long, Long> {
     @Column(length = 1000)
     private String proof;
 
+    private long expireAt = -1;
 }

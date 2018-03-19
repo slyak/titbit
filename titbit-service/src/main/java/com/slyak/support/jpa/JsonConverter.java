@@ -1,12 +1,10 @@
 package com.slyak.support.jpa;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.springframework.core.GenericTypeResolver;
 
 import javax.persistence.AttributeConverter;
-import java.util.List;
 
 /**
  * .
@@ -35,11 +33,16 @@ public class JsonConverter<T> implements AttributeConverter<T, String> {
         return dbData == null ? null : JSON.parseObject(dbData, generic);
     }
 
-    public static void main(String[] args) {
-        JsonConverter<List<String>> converter = new JsonConverter<List<String>>() {
-        };
-        System.out.println(converter.convertToDatabaseColumn(converter.convertToEntityAttribute("['1','2']")));
+/*    @Data
+    public static class Test{
+        String name;
     }
+
+    public static void main(String[] args) {
+        JsonConverter<List<Test>> converter = new JsonConverter<List<Test>>() {
+        };
+        System.out.println(converter.convertToEntityAttribute("[{name:'1'},{name:'2'}]"));
+    }*/
 
 
 }
